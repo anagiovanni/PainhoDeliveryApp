@@ -1,0 +1,16 @@
+-- Git config --
+git config --global user.name anagiovanni
+git config --global user.email anagiovanni66@gmail.com
+
+-- Criar o projeto
+npx create-expo-app@latest PainhoDelivery
+
+-- Limpando o template
+cd PainhoDelivery
+npm run reset-project   *pressionar n*
+
+-- Criar uma pasta constants
+-- Criar um arquivo Colors.ts na pasta constants
+
+-- Criar uma pasta components
+-- Criar um arquivo CustomHeader.tsx e executar rnfs
