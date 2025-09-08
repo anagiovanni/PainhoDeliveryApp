@@ -4,27 +4,40 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
 
+const SearchBar = () =>
+    <View style={styles.searchContainer}>
+        <View style={styles.searchField}>
+            <Ionicons style={styles.searchIcon} name="search" size={25} color={Colors.medium} />
+            <TextInput style={styles.input} placeholder='Restaurente, lanchonete, pratos' />
+        </View>
+        <Link href={'/'} asChild>
+            <TouchableOpacity style={styles.optionButton}>
+                <Ionicons name="options-outline" size={25} color={Colors.primary} />
+            </TouchableOpacity>
+        </Link>
+    </View>
 
 export default function () {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-            <TouchableOpacity>
-                <Image style={styles.bike} source={require('@/assets/images/bike.png')} />
-            </TouchableOpacity>
-            <View style={styles.titleContainer}>
-                <Text style={styles.titleContainer}>Entregando</Text>
-                <TouchableOpacity style={styles.location}>
-                    <Text style={styles.subtitle}>Barra Bonita, SP</Text>
-                    <Ionicons name='chevron-down' size={25} color={Colors.primary} />
+    return (
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.container}>
+                <TouchableOpacity>
+                    <Image style={styles.bike} source={require('@/assets/images/bike.png')} />
+                </TouchableOpacity>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.titleContainer}>Entregando</Text>
+                    <TouchableOpacity style={styles.location}>
+                        <Text style={styles.subtitle}>Barra Bonita, SP</Text>
+                        <Ionicons name='chevron-down' size={25} color={Colors.primary} />
+                    </TouchableOpacity>
+                </View>
+                <TouchableOpacity style={styles.profileButton}>
+                    <Ionicons name='person-outline' size={25} color={Colors.primary} />
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.profileButton}>
-                <Ionicons name='person-outline' size={25} color={Colors.primary} />
-            </TouchableOpacity>
-        </View>
-    </SafeAreaView>
-  )
+            <SearchBar />
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -64,6 +77,32 @@ const styles = StyleSheet.create({
     },
     profileButton: {
         backgroundColor: Colors.lightGrey,
+        padding: 10,
+        borderRadius: 50,
+    },
+    searchContainer: {
+        height: 60,
+        flexDirection: 'row',
+        gap: 10,
+        backgroundColor: '#fff',
+        paddingHorizontal: 20,
+        alignItems: 'center',
+    },
+    searchField: {
+        flex: 1,
+        backgroundColor: Colors.lightGrey,
+        borderRadius: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    input: {
+        padding: 10,
+        color: Colors.mediumDark,
+    },
+    searchIcon: {
+        paddingLeft: 10,
+    },
+    optionButton: {
         padding: 10,
         borderRadius: 50,
     }
