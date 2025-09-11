@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInput } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
+import BottomSheet from './BottomSheet';
+import { BottomSheetModal } from "@gorhom/bottom-sheet"
 
 const SearchBar = () =>
     <View style={styles.searchContainer}>
         <View style={styles.searchField}>
             <Ionicons style={styles.searchIcon} name="search" size={25} color={Colors.medium} />
-            <TextInput style={styles.input} placeholder='Restaurente, lanchonete, pratos' />
+            <TextInput style={styles.input} placeholder='Restaurante, lanchonete, pratos' />
         </View>
         <Link href={'/'} asChild>
             <TouchableOpacity style={styles.optionButton}>
@@ -17,11 +19,18 @@ const SearchBar = () =>
         </Link>
     </View>
 
-export default function () {
+export default function CustomHeader() {
+    const bottomSheetRef = useRef<BottomSheetModal>(null);
+
+    const openModal = () => {
+        bottomSheetRef.current?.present();
+    }
+
     return (
         <SafeAreaView style={styles.safeArea}>
+            <BottomSheet ref={bottomSheetRef} />
             <View style={styles.container}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={openModal}>
                     <Image style={styles.bike} source={require('@/assets/images/bike.png')} />
                 </TouchableOpacity>
                 <View style={styles.titleContainer}>
